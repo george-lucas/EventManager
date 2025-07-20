@@ -1,4 +1,5 @@
 package com.EventManager.domain.model;
+import com.EventManager.domain.enums.EventType;
 
 import java.time.LocalDateTime;
 
@@ -9,18 +10,11 @@ public class Event {
     private String description;
     private LocalDateTime dateTime;
     private String localization;
+    private String identifier;
+    private EventType eventType;
 
-    public Event() {
-    }
 
-    public Event(String name, String description, LocalDateTime dateTime, String localization) {
-        this.name = name;
-        this.description = description;
-        this.dateTime = dateTime;
-        this.localization = localization;
-    }
-
-    public Event(Long id, String name, String description, LocalDateTime dateTime, String localization) {
+    public Event(Long id, String name, String description, LocalDateTime dateTime, String localization, String identifier, EventType eventType) {
     }
 
     public Long getId() {
@@ -43,4 +37,11 @@ public class Event {
         return localization;
     }
 
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public EventType getEventType() {
+        return eventType;
+    }
 }

@@ -1,59 +1,19 @@
 package com.EventManager.interfaces.dto;
 
-import com.EventManager.domain.model.Event;
-
+import com.EventManager.domain.enums.EventType;
+import lombok.Data;
 import java.time.LocalDateTime;
 
+@Data
 public class EventRequestDTO {
-
+    private Long id;
     private String name;
     private String description;
     private LocalDateTime dateTime;
     private String localization;
+    private String identifier;
+    private EventType eventType;
 
-    public EventRequestDTO() {}
-
-    public EventRequestDTO(String name, String description, LocalDateTime dateTime, String localization) {
-        this.name = name;
-        this.description = description;
-        this.dateTime = dateTime;
-        this.localization = localization;
-    }
-
-    // Getters e setters
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
-    }
-
-    public String getLocalization() {
-        return localization;
-    }
-
-    public void setLocalization(String localization) {
-        this.localization = localization;
-    }
-
-    public Event toDomain() {
-        return new Event(null, name, description, dateTime, localization);
+    public EventRequestDTO(Long id, String name, String description, LocalDateTime dateTime, String localization, String identifier, EventType eventType) {
     }
 }

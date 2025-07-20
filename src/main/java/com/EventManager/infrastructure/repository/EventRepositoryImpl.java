@@ -3,10 +3,12 @@ package com.EventManager.infrastructure.repository;
 import com.EventManager.domain.model.Event;
 import com.EventManager.domain.repository.EventRepository;
 import com.EventManager.infrastructure.persistence.entity.EventEntity;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class EventRepositoryImpl implements EventRepository {
 
     private final EventRepositoryJPA eventRepositoryJPA;

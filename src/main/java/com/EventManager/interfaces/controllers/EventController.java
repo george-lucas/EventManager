@@ -1,19 +1,19 @@
 package com.EventManager.interfaces.controllers;
 
 import com.EventManager.domain.model.Event;
-import com.EventManager.domain.service.EventService;
+import com.EventManager.domain.useCases.CreateEventUseCase;
 import com.EventManager.interfaces.dto.EventRequestDTO;
+import com.EventManager.interfaces.mapper.EventMapper;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 
 @RestController
 @RequestMapping("/event")
 public class EventController {
 
-    private final EventService eventService;
+    private final CreateEventUseCase createEventUseCase;
 
-    public EventController(EventService eventService) {
-        this.eventService = eventService;
+    public EventController(CreateEventUseCase createEventUseCase) {
+        this.createEventUseCase = createEventUseCase;
     }
 
     @GetMapping("/home")
@@ -22,8 +22,11 @@ public class EventController {
     }
 
     @PostMapping("/save")
-    public Event save(@RequestBody EventRequestDTO dto){
-        return eventService.saveEvent(dto);
+    public EventRequestDTO save(@RequestBody EventRequestDTO dto){
+        Event event = EventMapper.toDomain(dto);
+        Event eventSaved = createEventUseCase.execute(event);
+        return EventMapper.toResponse(eventSaved);
+
     }
 
 
