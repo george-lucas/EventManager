@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: EventManager
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/eventManager
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
